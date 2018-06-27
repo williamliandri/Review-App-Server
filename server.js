@@ -6,6 +6,7 @@ var morgan = require('morgan');             // log requests to the console (expr
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var cors = require('cors');
+const PORT = process.env.PORT || 3000;
  
 // Configuration
 mongoose.connect('mongodb://test123:test123@ds121331.mlab.com:21331/reviewappdatabase', function(err){
@@ -91,5 +92,7 @@ var Review = mongoose.model('reviews', {
  
  
 // listen (start app with node server.js) ======================================
-app.listen(8080);
-console.log("App listening on port 8080");
+// Start the app at the Port point
+app.listen(PORT,function(){
+    console.log(`Express listening on port ${PORT}`);
+});
