@@ -1,2 +1,4 @@
-## Provides API for Review King App
-## The application can be downloaded from https://www.dropbox.com/s/r7wdwuym1ky8yp1/ReviewKing.apk?dl=0
+# Review Application for Android
+## The apk is created using Ionic Framework. You feel free to download the application.
+## The server.js provides the API from the framework.
+
