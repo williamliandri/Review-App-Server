@@ -85,18 +85,26 @@ var Review = mongoose.model('reviews', {
     });
  
     // delete a review
-    app.post('/api/reviews/:review_id', function(req, res) {
+    app.delete('/api/reviews/:review_id', function(req, res) {
         // Review.remove({
         //     _id : req.params.review_id
         // }, function(err, review) {
- 
+        //     if (err){
+        //         console.log("Error in removing the review.");
+        //     }
+        //     else {
+        //         console.log("Success removing the review.");
+        //     }
         // });
 
-        Review.findOneAndRemove({_id: req.params.review_id}, function(req, res){
+        Review.findOneAndRemove({_id: req.params.review_id}, (err) => {
             if (err){
-                console.log("Error in removing the review");
+                console.log("Error in removing the review.");
             }
-        })
+            else {
+                console.log("Success removing the review.");
+            }
+        });
     });
 
     app.get('/', function(req, res) {
