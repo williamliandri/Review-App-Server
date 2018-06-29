@@ -1,0 +1,23 @@
+{
+  "name": "kremajaserver",
+  "version": "1.0.0",
+  "description": "Kremaja API Server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "William Liandri",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.6.2",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5",
+    "npm": "^6.1.0"
+  }
+}
