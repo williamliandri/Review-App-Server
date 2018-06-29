@@ -6,7 +6,7 @@ var morgan = require('morgan');             // log requests to the console (expr
 var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var cors = require('cors');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3100;
  
 // Configuration
 mongoose.connect('mongodb://test123:test123@ds121331.mlab.com:21331/reviewappdatabase', function(err){
@@ -52,10 +52,12 @@ var Review = mongoose.model('reviews', {
         Review.find(function(err, reviews) {
  
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
- 
-            res.json(reviews); // return all reviews in JSON format
+            if (err) {
+                res.send(err);
+            }
+            else {
+                res.json(reviews); // return all reviews in JSON format
+            }
         });
     });
  
@@ -71,31 +73,27 @@ var Review = mongoose.model('reviews', {
             rating: req.body.rating,
             done : false
         }, function(err, review) {
-            if (err)
+            if (err) {
                 res.send(err);
- 
+            }
+
             // get and return all the reviews after you create another
-            Review.find(function(err, reviews) {
-                if (err)
-                    res.send(err)
-                res.json(reviews);
-            });
+            else {
+                Review.find(function(err, reviews) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    else {
+                        res.json(reviews);
+                    }
+                });
+            }
         });
  
     });
  
     // delete a review
     app.delete('/api/reviews/:review_id', function(req, res) {
-        // Review.remove({
-        //     _id : req.params.review_id
-        // }, function(err, review) {
-        //     if (err){
-        //         console.log("Error in removing the review.");
-        //     }
-        //     else {
-        //         console.log("Success removing the review.");
-        //     }
-        // });
 
         Review.findOneAndRemove({_id: req.params.review_id}, (err) => {
             if (err){
