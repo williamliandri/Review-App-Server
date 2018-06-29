@@ -20,6 +20,7 @@
     "superlogin": "^0.6.1"
   },
   "dependencies": {
+    "ejs": "^2.6.1",
     "nodemon": "^1.17.5"
   }
 }

@@ -30,7 +30,10 @@ app.use(function(req, res, next) {
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    next();
 });
- 
+
+// Set the app to be able to use ejs.
+app.set('view engine','ejs');
+
 // Models
 var Review = mongoose.model('reviews', {
     title: String,
@@ -88,6 +91,10 @@ var Review = mongoose.model('reviews', {
         }, function(err, review) {
  
         });
+    });
+
+    app.get('/', function(req, res) {
+        res.render('home');
     });
  
  
